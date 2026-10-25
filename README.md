@@ -16,6 +16,8 @@ Kaggle CSV ─clean─▶ MongoDB 7.0 (native, :27019) ─export─▶ HDFS (3 b
 ## Start here
 | I want to… | Open |
 |---|---|
+| **Run it / do the demo** | [`docs/HOW_TO_RUN.md`](docs/HOW_TO_RUN.md) |
+| **See what was done, in plain words** | [`docs/WHAT_WAS_DONE.md`](docs/WHAT_WAS_DONE.md) |
 | **Build it from zero and understand every command** | [`docs/STEP_BY_STEP.md`](docs/STEP_BY_STEP.md) |
 | Check it against the faculty rubric | [`docs/RUBRIC_CHECK.md`](docs/RUBRIC_CHECK.md) |
 | Write the report | [`docs/REPORT_DRAFT.md`](docs/REPORT_DRAFT.md) |
