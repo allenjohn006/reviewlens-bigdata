@@ -40,7 +40,7 @@ Safety net if something fails: every output already exists in `results/` and `ev
 | How are MongoDB and Hadoop connected? | Through a file: export from MongoDB → HDFS → jobs → results → loaded back. The official MongoDB-Hadoop connector is discontinued. |
 | Why is this "big data"? | 567 k reviews, 283 MB text, 22.8 M words processed; the same code scales to the 14 M-review set (6 GB) used in RetailPulse. Honest: it is a mini-cluster on one machine. |
 | How do you know the results are right? | Independent pandas recomputation, 5/5 checks, zero mismatches; unit tests. |
-| What is an index? | A sorted lookup structure; the product query examined 913 docs (1 ms) instead of 567,247 (259 ms). |
+| What is an index? | A sorted lookup structure; the product query examined 913 docs (about 1–3 ms) instead of 567,247 (about 260 ms). |
 | What did cleaning change? | −1,205 duplicates, −2 impossible rows, 146,636 HTML-stripped, 53 nulls filled. |
 | What are the limits? | Single node; frequency ≠ sentiment; variant-copied reviews remain; data from 1999–2012. |
 | What are speculative tasks? | Hadoop starts a duplicate attempt of a slow task and keeps whichever finishes first; J1 had 2 killed attempts. |
