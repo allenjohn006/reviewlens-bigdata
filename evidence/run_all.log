@@ -1,0 +1,272 @@
+mongod already running
+MongoDB 7.0.14 is up on port undefined
+NameNode already running
+DataNode already running
+ResourceManager already running
+NodeManager already running
+7329 ResourceManager
+5875 NameNode
+7738 NodeManager
+6396 DataNode
+{
+  "rows_in": 568454,
+  "null_profile_name_filled": 26,
+  "null_summary_filled": 27,
+  "dropped_missing_mandatory": 0,
+  "dropped_helpful_gt_total": 2,
+  "dropped_score_out_of_range": 0,
+  "dropped_exact_duplicates": 1205,
+  "reviews_with_html_tags_cleaned": 146636,
+  "dropped_empty_text_after_cleaning": 0,
+  "rows_out": 567247,
+  "rows_removed_total": 1207,
+  "products": 74258,
+  "users": 256059,
+  "date_min": "1999-10-08",
+  "date_max": "2012-10-26",
+  "sentiment_counts": {
+    "positive": 442966,
+    "negative": 81723,
+    "neutral": 42558
+  }
+}
+wrote /home/allen/reviewlens/data/clean/reviews_clean.jsonl (393 MB)
+connected to MongoDB 7.0.14 at ('127.0.0.1', 27019)
+{
+  "inserted": 567247,
+  "count_in_db": 567247,
+  "insert_seconds": 11.2,
+  "docs_per_second": 50732,
+  "indexes": [
+    "_id_",
+    "productId_1",
+    "userId_1",
+    "date_1",
+    "score_1",
+    "sentiment_1",
+    "reviewId_1"
+  ],
+  "storage_mb": 152,
+  "avg_doc_bytes": 696
+}
+exported 567247 reviews from MongoDB to /home/allen/reviewlens/data/clean/reviews.tsv (283 MB)
+J1_sentiment_words  exit=0  elapsed=65s  output_rows=34541
+Launched map tasks=5;Launched reduce tasks=2;Map input records=567247;Map output records=22811691;Combine input records=23453285;Combine output records=950254;Reduce input records=308660;Reduce output records=34541;
+
+J2_product_stats  exit=0  elapsed=23s  output_rows=74258
+Launched map tasks=3;Launched reduce tasks=2;Map input records=567247;Map output records=567247;Combine input records=567247;Combine output records=74260;Reduce input records=74260;Reduce output records=74258;
+
+J3_monthly_volume  exit=0  elapsed=22s  output_rows=143
+Launched map tasks=3;Launched reduce tasks=1;Map input records=567247;Map output records=567247;Combine input records=567247;Combine output records=377;Reduce input records=377;Reduce output records=143;
+
+J4_reviewer_activity  exit=0  elapsed=23s  output_rows=256059
+Launched map tasks=3;Launched reduce tasks=2;Map input records=567247;Map output records=567247;Combine input records=567247;Combine output records=327458;Reduce input records=327458;Reduce output records=256059;
+
+J4b_activity_histogram  exit=0  elapsed=21s  output_rows=7
+Launched map tasks=2;Launched reduce tasks=1;Map input records=256059;Map output records=256059;Combine input records=256059;Combine output records=14;Reduce input records=14;Reduce output records=7;
+
+{'mr_words': 34541, 'mr_products': 74258, 'mr_months': 143, 'mr_users': 256059, 'mr_activity_hist': 7, 'mr_jobs': 5}
+PASS J1 word counts by sentiment (>=20) (34541 keys, 0 mismatches)
+PASS J2 per-product reviews, average, star histogram (74258 keys, 0 mismatches)
+PASS J3 monthly reviews, score sum, helpful votes (143 keys, 0 mismatches)
+PASS J4 reviews per reviewer (256059 keys, 0 mismatches)
+PASS J4b reviewer-activity histogram (7 keys, 0 mismatches)
+ALL PASS
+{
+  "reviews_total": 567247,
+  "star_share_pct": [
+    9.2,
+    5.2,
+    7.5,
+    14.2,
+    63.9
+  ],
+  "top_positive_words": [
+    "great",
+    "good",
+    "like",
+    "coffee",
+    "love",
+    "taste",
+    "tea",
+    "flavor"
+  ],
+  "top_negative_words": [
+    "like",
+    "taste",
+    "product",
+    "good",
+    "coffee",
+    "flavor",
+    "food",
+    "tea"
+  ],
+  "negative_signal_words": [
+    {
+      "word": "deceptive",
+      "negative": 493,
+      "positive": 62,
+      "ratio": 39.8
+    },
+    {
+      "word": "yuck",
+      "negative": 2071,
+      "positive": 371,
+      "ratio": 28.3
+    },
+    {
+      "word": "worst",
+      "negative": 3861,
+      "positive": 791,
+      "ratio": 24.8
+    },
+    {
+      "word": "refund",
+      "negative": 1770,
+      "positive": 388,
+      "ratio": 23.2
+    },
+    {
+      "word": "false",
+      "negative": 677,
+      "positive": 152,
+      "ratio": 22.5
+    },
+    {
+      "word": "disappointing",
+      "negative": 2528,
+      "positive": 594,
+      "ratio": 21.6
+    },
+    {
+      "word": "moldy",
+      "negative": 499,
+      "positive": 131,
+      "ratio": 19.2
+    },
+    {
+      "word": "inedible",
+      "negative": 676,
+      "positive": 180,
+      "ratio": 19.0
+    }
+  ],
+  "peak_month": {
+    "month": "2012-09",
+    "reviews": 21903,
+    "avgScore": 4.1196,
+    "helpYes": 5606,
+    "helpTotal": 8134
+  },
+  "avg_score_first_year": 4.38,
+  "avg_score_last_year": 4.12,
+  "reviewers": 256059,
+  "one_review_reviewers_pct": 68.5,
+  "most_active_reviewer": {
+    "userId": "A3OXHLG6DIBRW8",
+    "reviews": 442
+  },
+  "best_products_ge100_reviews": [
+    {
+      "productId": "B000ED9L9E",
+      "reviews": 113,
+      "avgScore": 4.9735
+    },
+    {
+      "productId": "B000O5DI1E",
+      "reviews": 107,
+      "avgScore": 4.9065
+    },
+    {
+      "productId": "B000NMJWZO",
+      "reviews": 542,
+      "avgScore": 4.8819
+    },
+    {
+      "productId": "B003QDRJXY",
+      "reviews": 264,
+      "avgScore": 4.8371
+    },
+    {
+      "productId": "B003KRHDMI",
+      "reviews": 132,
+      "avgScore": 4.8333
+    }
+  ],
+  "worst_products_ge100_reviews": [
+    {
+      "productId": "B006N3I69A",
+      "reviews": 131,
+      "avgScore": 1.3435
+    },
+    {
+      "productId": "B000X1Q1G8",
+      "reviews": 184,
+      "avgScore": 1.6957
+    },
+    {
+      "productId": "B003JA5KBW",
+      "reviews": 139,
+      "avgScore": 2.7554
+    },
+    {
+      "productId": "B007RTR9DS",
+      "reviews": 186,
+      "avgScore": 2.7796
+    },
+    {
+      "productId": "B0017M5V9A",
+      "reviews": 104,
+      "avgScore": 2.7885
+    }
+  ],
+  "products_with
+charts: ['01_top_words.png', '02_negative_signal_words.png', '03_star_distribution.png', '04_monthly.png', '05_reviewer_activity.png']
+== Connected to MongoDB 7.0.14 at ('127.0.0.1', 27019) (native process, not Docker). Database: reviewlens, collections: ['mr_activity_hist', 'mr_jobs', 'mr_months', 'mr_products', 'mr_users', 'mr_words', 'reviews']
+   reviews in collection: 567247
+
+== CREATE  (insert_one / insert_many)
+insert_one -> 6addde00fa1d8e9fb7594cf1
+insert_many -> 3 documents
+
+== READ  (find / count / aggregate)
+find_one reviewId=9000001 ->
+{'date': '2026-10-25',
+ 'helpTotal': 0,
+ 'helpYes': 0,
+ 'month': '2026-10',
+ 'productId': 'B000DEMO01',
+ 'profileName': 'viva demo',
+ 'reviewId': 9000001,
+ 'score': 5,
+ 'sentiment': 'positive',
+ 'summary': 'Demo review',
+ 'text': 'Inserted live during the viva.',
+ 'userId': 'ADEMOUSER'}
+demo reviews by sentiment: {'negative': 1, 'neutral': 1, 'positive': 2}
+5-star reviews in the whole collection: 362416
+Top 5 products with >= 200 reviews by average score (aggregation pipeline straight on the 567k reviews):
+   B000NMJWZO  reviews=542  avg=4.882
+   B003QDRJXY  reviews=264  avg=4.837
+   B000GAT6NG  reviews=389  avg=4.802
+   B001E8DHPW  reviews=389  avg=4.802
+   B004EAGP74  reviews=389  avg=4.802
+
+== UPDATE  (update_one / update_many)
+update_one helpYes += 2 -> 1 modified
+update_many set flag on demo docs -> 4 modified
+after update: {'helpYes': 2, 'helpTotal': 2, 'demo': True}
+
+== DELETE  (delete_one / delete_many)
+delete_one -> 1
+delete_many demo product -> 3
+reviews now: 567247
+
+== INDEX  (why indexes matter: explain with and without the productId index)
+   WITH index    -> docs examined=    913  returned= 913  server time=3 ms
+   WITHOUT index  -> docs examined= 567247  returned= 913  server time=263 ms
+   index list: ['_id_', 'productId_1', 'userId_1', 'date_1', 'score_1', 'sentiment_1', 'reviewId_1']
+
+real	4m39.147s
+user	3m2.906s
+sys	0m11.727s

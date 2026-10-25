@@ -1,0 +1,12 @@
+<configuration>
+<property><name>mapreduce.framework.name</name><value>yarn</value></property>
+<property><name>mapreduce.application.classpath</name><value>$HADOOP_MAPRED_HOME/share/hadoop/mapreduce/*:$HADOOP_MAPRED_HOME/share/hadoop/mapreduce/lib/*</value></property>
+<property><name>yarn.app.mapreduce.am.env</name><value>HADOOP_MAPRED_HOME=/home/allen/tools/hadoop</value></property>
+<property><name>mapreduce.map.env</name><value>HADOOP_MAPRED_HOME=/home/allen/tools/hadoop</value></property>
+<property><name>mapreduce.reduce.env</name><value>HADOOP_MAPRED_HOME=/home/allen/tools/hadoop</value></property>
+<property><name>mapreduce.map.memory.mb</name><value>768</value></property>
+<property><name>mapreduce.reduce.memory.mb</name><value>1024</value></property>
+<property><name>mapreduce.map.java.opts</name><value>-Xmx512m</value></property>
+<property><name>mapreduce.reduce.java.opts</name><value>-Xmx768m</value></property>
+<property><name>yarn.app.mapreduce.am.resource.mb</name><value>1024</value></property>
+</configuration>

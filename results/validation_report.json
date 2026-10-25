@@ -1,0 +1,51 @@
+{
+  "all_pass": true,
+  "rows_validated": 567247,
+  "checks": [
+    {
+      "check": "J1 word counts by sentiment (>=20)",
+      "keys": 34541,
+      "missing_in_hadoop": 0,
+      "extra_in_hadoop": 0,
+      "mismatches": 0,
+      "status": "PASS",
+      "examples": []
+    },
+    {
+      "check": "J2 per-product reviews, average, star histogram",
+      "keys": 74258,
+      "missing_in_hadoop": 0,
+      "extra_in_hadoop": 0,
+      "mismatches": 0,
+      "status": "PASS",
+      "examples": []
+    },
+    {
+      "check": "J3 monthly reviews, score sum, helpful votes",
+      "keys": 143,
+      "missing_in_hadoop": 0,
+      "extra_in_hadoop": 0,
+      "mismatches": 0,
+      "status": "PASS",
+      "examples": []
+    },
+    {
+      "check": "J4 reviews per reviewer",
+      "keys": 256059,
+      "missing_in_hadoop": 0,
+      "extra_in_hadoop": 0,
+      "mismatches": 0,
+      "status": "PASS",
+      "examples": []
+    },
+    {
+      "check": "J4b reviewer-activity histogram",
+      "keys": 7,
+      "missing_in_hadoop": 0,
+      "extra_in_hadoop": 0,
+      "mismatches": 0,
+      "status": "PASS",
+      "examples": []
+    }
+  ]
+}

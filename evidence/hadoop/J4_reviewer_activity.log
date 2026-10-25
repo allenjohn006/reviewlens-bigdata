@@ -1,0 +1,85 @@
+# JOB J4_reviewer_activity 2026-10-25T16:14:49+05:30 input=/reviewlens/raw/reviews.tsv mapper=j4_user_mapper.py reducer=sum_reducer.py combiner=sum_reducer.py
+packageJobJar: [/tmp/hadoop-unjar14476717411802003746/] [] /tmp/streamjob16366812181200311112.jar tmpDir=null
+2026-10-25 16:14:50,869 INFO client.DefaultNoHARMFailoverProxyProvider: Connecting to ResourceManager at /0.0.0.0:8032
+2026-10-25 16:14:50,989 INFO client.DefaultNoHARMFailoverProxyProvider: Connecting to ResourceManager at /0.0.0.0:8032
+2026-10-25 16:14:51,198 INFO mapreduce.JobResourceUploader: Disabling Erasure Coding for path: /tmp/hadoop-yarn/staging/allen/.staging/job_1792838390068_0010
+2026-10-25 16:14:51,587 INFO mapred.FileInputFormat: Total input files to process : 1
+2026-10-25 16:14:51,652 INFO mapreduce.JobSubmitter: number of splits:3
+2026-10-25 16:14:51,856 INFO mapreduce.JobSubmitter: Submitting tokens for job: job_1792838390068_0010
+2026-10-25 16:14:51,856 INFO mapreduce.JobSubmitter: Executing with tokens: []
+2026-10-25 16:14:52,070 INFO conf.Configuration: resource-types.xml not found
+2026-10-25 16:14:52,070 INFO resource.ResourceUtils: Unable to find 'resource-types.xml'.
+2026-10-25 16:14:52,139 INFO impl.YarnClientImpl: Submitted application application_1792838390068_0010
+2026-10-25 16:14:52,170 INFO mapreduce.Job: The url to track the job: http://LNX:8088/proxy/application_1792838390068_0010/
+2026-10-25 16:14:52,171 INFO mapreduce.Job: Running job: job_1792838390068_0010
+2026-10-25 16:14:58,298 INFO mapreduce.Job: Job job_1792838390068_0010 running in uber mode : false
+2026-10-25 16:14:58,300 INFO mapreduce.Job:  map 0% reduce 0%
+2026-10-25 16:15:05,409 INFO mapreduce.Job:  map 33% reduce 0%
+2026-10-25 16:15:06,417 INFO mapreduce.Job:  map 67% reduce 0%
+2026-10-25 16:15:07,427 INFO mapreduce.Job:  map 100% reduce 0%
+2026-10-25 16:15:11,466 INFO mapreduce.Job:  map 100% reduce 100%
+2026-10-25 16:15:12,496 INFO mapreduce.Job: Job job_1792838390068_0010 completed successfully
+2026-10-25 16:15:12,595 INFO mapreduce.Job: Counters: 55
+	File System Counters
+		FILE: Number of bytes read=6141021
+		FILE: Number of bytes written=13859828
+		FILE: Number of read operations=0
+		FILE: Number of large read operations=0
+		FILE: Number of write operations=0
+		HDFS: Number of bytes read=282972245
+		HDFS: Number of bytes written=4294827
+		HDFS: Number of read operations=19
+		HDFS: Number of large read operations=0
+		HDFS: Number of write operations=4
+		HDFS: Number of bytes read erasure-coded=0
+	Job Counters 
+		Killed map tasks=1
+		Launched map tasks=3
+		Launched reduce tasks=2
+		Data-local map tasks=3
+		Total time spent by all maps in occupied slots (ms)=34664
+		Total time spent by all reduces in occupied slots (ms)=16268
+		Total time spent by all map tasks (ms)=17332
+		Total time spent by all reduce tasks (ms)=8134
+		Total vcore-milliseconds taken by all map tasks=17332
+		Total vcore-milliseconds taken by all reduce tasks=8134
+		Total megabyte-milliseconds taken by all map tasks=17747968
+		Total megabyte-milliseconds taken by all reduce tasks=8329216
+	Map-Reduce Framework
+		Map input records=567247
+		Map output records=567247
+		Map output bytes=9496171
+		Map output materialized bytes=6141045
+		Input split bytes=300
+		Combine input records=567247
+		Combine output records=327458
+		Reduce input groups=256059
+		Reduce shuffle bytes=6141045
+		Reduce input records=327458
+		Reduce output records=256059
+		Spilled Records=654916
+		Shuffled Maps =6
+		Failed Shuffles=0
+		Merged Map outputs=6
+		GC time elapsed (ms)=184
+		CPU time spent (ms)=24100
+		Physical memory (bytes) snapshot=1360076800
+		Virtual memory (bytes) snapshot=12791361536
+		Total committed heap usage (bytes)=795869184
+		Peak Map Physical memory (bytes)=323088384
+		Peak Map Virtual memory (bytes)=2453700608
+		Peak Reduce Physical memory (bytes)=215928832
+		Peak Reduce Virtual memory (bytes)=2728087552
+	Shuffle Errors
+		BAD_ID=0
+		CONNECTION=0
+		IO_ERROR=0
+		WRONG_LENGTH=0
+		WRONG_MAP=0
+		WRONG_REDUCE=0
+	File Input Format Counters 
+		Bytes Read=282971945
+	File Output Format Counters 
+		Bytes Written=4294827
+2026-10-25 16:15:12,595 INFO streaming.StreamJob: Output directory: /reviewlens/out/J4_reviewer_activity
+# exit=0 elapsed_s=23

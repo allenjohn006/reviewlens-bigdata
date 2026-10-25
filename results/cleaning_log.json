@@ -1,0 +1,22 @@
+{
+  "rows_in": 568454,
+  "null_profile_name_filled": 26,
+  "null_summary_filled": 27,
+  "dropped_missing_mandatory": 0,
+  "dropped_helpful_gt_total": 2,
+  "dropped_score_out_of_range": 0,
+  "dropped_exact_duplicates": 1205,
+  "reviews_with_html_tags_cleaned": 146636,
+  "dropped_empty_text_after_cleaning": 0,
+  "rows_out": 567247,
+  "rows_removed_total": 1207,
+  "products": 74258,
+  "users": 256059,
+  "date_min": "1999-10-08",
+  "date_max": "2012-10-26",
+  "sentiment_counts": {
+    "positive": 442966,
+    "negative": 81723,
+    "neutral": 42558
+  }
+}

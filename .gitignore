@@ -1,0 +1,9 @@
+data/
+mongo-data/
+logs/
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+results/mr/J2_product_stats.tsv
+results/mr/J4_reviewer_activity.tsv

@@ -1,0 +1,5 @@
+<configuration>
+<property><name>dfs.replication</name><value>1</value></property>
+<property><name>dfs.namenode.name.dir</name><value>file:///home/allen/hdfs/nn</value></property>
+<property><name>dfs.datanode.data.dir</name><value>file:///home/allen/hdfs/dn</value></property>
+</configuration>

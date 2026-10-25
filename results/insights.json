@@ -1,0 +1,150 @@
+{
+  "reviews_total": 567247,
+  "star_share_pct": [
+    9.2,
+    5.2,
+    7.5,
+    14.2,
+    63.9
+  ],
+  "top_positive_words": [
+    "great",
+    "good",
+    "like",
+    "coffee",
+    "love",
+    "taste",
+    "tea",
+    "flavor"
+  ],
+  "top_negative_words": [
+    "like",
+    "taste",
+    "product",
+    "good",
+    "coffee",
+    "flavor",
+    "food",
+    "tea"
+  ],
+  "negative_signal_words": [
+    {
+      "word": "deceptive",
+      "negative": 493,
+      "positive": 62,
+      "ratio": 39.8
+    },
+    {
+      "word": "yuck",
+      "negative": 2071,
+      "positive": 371,
+      "ratio": 28.3
+    },
+    {
+      "word": "worst",
+      "negative": 3861,
+      "positive": 791,
+      "ratio": 24.8
+    },
+    {
+      "word": "refund",
+      "negative": 1770,
+      "positive": 388,
+      "ratio": 23.2
+    },
+    {
+      "word": "false",
+      "negative": 677,
+      "positive": 152,
+      "ratio": 22.5
+    },
+    {
+      "word": "disappointing",
+      "negative": 2528,
+      "positive": 594,
+      "ratio": 21.6
+    },
+    {
+      "word": "moldy",
+      "negative": 499,
+      "positive": 131,
+      "ratio": 19.2
+    },
+    {
+      "word": "inedible",
+      "negative": 676,
+      "positive": 180,
+      "ratio": 19.0
+    }
+  ],
+  "peak_month": {
+    "month": "2012-09",
+    "reviews": 21903,
+    "avgScore": 4.1196,
+    "helpYes": 5606,
+    "helpTotal": 8134
+  },
+  "avg_score_first_year": 4.38,
+  "avg_score_last_year": 4.12,
+  "reviewers": 256059,
+  "one_review_reviewers_pct": 68.5,
+  "most_active_reviewer": {
+    "userId": "A3OXHLG6DIBRW8",
+    "reviews": 442
+  },
+  "best_products_ge100_reviews": [
+    {
+      "productId": "B000ED9L9E",
+      "reviews": 113,
+      "avgScore": 4.9735
+    },
+    {
+      "productId": "B000O5DI1E",
+      "reviews": 107,
+      "avgScore": 4.9065
+    },
+    {
+      "productId": "B000NMJWZO",
+      "reviews": 542,
+      "avgScore": 4.8819
+    },
+    {
+      "productId": "B003QDRJXY",
+      "reviews": 264,
+      "avgScore": 4.8371
+    },
+    {
+      "productId": "B003KRHDMI",
+      "reviews": 132,
+      "avgScore": 4.8333
+    }
+  ],
+  "worst_products_ge100_reviews": [
+    {
+      "productId": "B006N3I69A",
+      "reviews": 131,
+      "avgScore": 1.3435
+    },
+    {
+      "productId": "B000X1Q1G8",
+      "reviews": 184,
+      "avgScore": 1.6957
+    },
+    {
+      "productId": "B003JA5KBW",
+      "reviews": 139,
+      "avgScore": 2.7554
+    },
+    {
+      "productId": "B007RTR9DS",
+      "reviews": 186,
+      "avgScore": 2.7796
+    },
+    {
+      "productId": "B0017M5V9A",
+      "reviews": 104,
+      "avgScore": 2.7885
+    }
+  ],
+  "products_with_ge100_reviews": 857
+}
