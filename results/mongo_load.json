@@ -1,8 +1,8 @@
 {
   "inserted": 567247,
   "count_in_db": 567247,
-  "insert_seconds": 11.2,
-  "docs_per_second": 50732,
+  "insert_seconds": 9.4,
+  "docs_per_second": 60323,
   "indexes": [
     "_id_",
     "productId_1",
@@ -12,6 +12,6 @@
     "sentiment_1",
     "reviewId_1"
   ],
-  "storage_mb": 152,
+  "storage_mb": 190,
   "avg_doc_bytes": 696
 }

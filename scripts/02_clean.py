@@ -26,6 +26,7 @@ raw["sentiment"] = pd.cut(raw.Score, [0, 2, 3, 5], labels=["negative", "neutral"
 log["rows_out"] = int(len(raw)); log["rows_removed_total"] = log["rows_in"] - log["rows_out"]; log["products"] = int(raw.ProductId.nunique()); log["users"] = int(raw.UserId.nunique())
 log["date_min"], log["date_max"] = raw.date.min(), raw.date.max(); log["sentiment_counts"] = raw.sentiment.value_counts().to_dict()
 out = ROOT / "data/clean/reviews_clean.jsonl"
+out.parent.mkdir(parents=True, exist_ok=True)
 with open(out, "w", encoding="utf-8") as f:
     for r in raw.itertuples(index=False):
         f.write(json.dumps({"reviewId": int(r.Id), "productId": r.ProductId, "userId": r.UserId, "profileName": r.ProfileName, "helpYes": int(r.HelpfulnessNumerator), "helpTotal": int(r.HelpfulnessDenominator),

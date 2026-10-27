@@ -1,23 +1,23 @@
-# JOB J4b_activity_histogram 2026-10-25T16:15:16+05:30 input=/reviewlens/out/J4_reviewer_activity mapper=j4b_hist_mapper.py reducer=sum_reducer.py combiner=sum_reducer.py
-packageJobJar: [/tmp/hadoop-unjar3705428010892348866/] [] /tmp/streamjob13451232112513308399.jar tmpDir=null
-2026-10-25 16:15:18,382 INFO client.DefaultNoHARMFailoverProxyProvider: Connecting to ResourceManager at /0.0.0.0:8032
-2026-10-25 16:15:18,554 INFO client.DefaultNoHARMFailoverProxyProvider: Connecting to ResourceManager at /0.0.0.0:8032
-2026-10-25 16:15:18,839 INFO mapreduce.JobResourceUploader: Disabling Erasure Coding for path: /tmp/hadoop-yarn/staging/allen/.staging/job_1792838390068_0011
-2026-10-25 16:15:19,295 INFO mapred.FileInputFormat: Total input files to process : 2
-2026-10-25 16:15:19,344 INFO mapreduce.JobSubmitter: number of splits:2
-2026-10-25 16:15:19,516 INFO mapreduce.JobSubmitter: Submitting tokens for job: job_1792838390068_0011
-2026-10-25 16:15:19,516 INFO mapreduce.JobSubmitter: Executing with tokens: []
-2026-10-25 16:15:19,751 INFO conf.Configuration: resource-types.xml not found
-2026-10-25 16:15:19,751 INFO resource.ResourceUtils: Unable to find 'resource-types.xml'.
-2026-10-25 16:15:19,814 INFO impl.YarnClientImpl: Submitted application application_1792838390068_0011
-2026-10-25 16:15:19,844 INFO mapreduce.Job: The url to track the job: http://LNX:8088/proxy/application_1792838390068_0011/
-2026-10-25 16:15:19,845 INFO mapreduce.Job: Running job: job_1792838390068_0011
-2026-10-25 16:15:25,971 INFO mapreduce.Job: Job job_1792838390068_0011 running in uber mode : false
-2026-10-25 16:15:25,972 INFO mapreduce.Job:  map 0% reduce 0%
-2026-10-25 16:15:32,069 INFO mapreduce.Job:  map 100% reduce 0%
-2026-10-25 16:15:37,119 INFO mapreduce.Job:  map 100% reduce 100%
-2026-10-25 16:15:37,137 INFO mapreduce.Job: Job job_1792838390068_0011 completed successfully
-2026-10-25 16:15:37,247 INFO mapreduce.Job: Counters: 54
+# JOB J4b_activity_histogram 2026-10-27T12:51:18+00:00 input=/reviewlens/out/J4_reviewer_activity mapper=j4b_hist_mapper.py reducer=sum_reducer.py combiner=sum_reducer.py
+packageJobJar: [/tmp/hadoop-unjar8578226432915966558/] [] /tmp/streamjob13950387723987887951.jar tmpDir=null
+2026-10-27 12:51:19,378 INFO client.DefaultNoHARMFailoverProxyProvider: Connecting to ResourceManager at /0.0.0.0:8032
+2026-10-27 12:51:19,514 INFO client.DefaultNoHARMFailoverProxyProvider: Connecting to ResourceManager at /0.0.0.0:8032
+2026-10-27 12:51:19,804 INFO mapreduce.JobResourceUploader: Disabling Erasure Coding for path: /tmp/hadoop-yarn/staging/allen/.staging/job_1793103943374_0005
+2026-10-27 12:51:20,168 INFO mapred.FileInputFormat: Total input files to process : 2
+2026-10-27 12:51:20,627 INFO mapreduce.JobSubmitter: number of splits:2
+2026-10-27 12:51:20,779 INFO mapreduce.JobSubmitter: Submitting tokens for job: job_1793103943374_0005
+2026-10-27 12:51:20,779 INFO mapreduce.JobSubmitter: Executing with tokens: []
+2026-10-27 12:51:20,952 INFO conf.Configuration: resource-types.xml not found
+2026-10-27 12:51:20,952 INFO resource.ResourceUtils: Unable to find 'resource-types.xml'.
+2026-10-27 12:51:20,997 INFO impl.YarnClientImpl: Submitted application application_1793103943374_0005
+2026-10-27 12:51:21,019 INFO mapreduce.Job: The url to track the job: http://LNX.localdomain:8088/proxy/application_1793103943374_0005/
+2026-10-27 12:51:21,020 INFO mapreduce.Job: Running job: job_1793103943374_0005
+2026-10-27 12:51:27,114 INFO mapreduce.Job: Job job_1793103943374_0005 running in uber mode : false
+2026-10-27 12:51:27,115 INFO mapreduce.Job:  map 0% reduce 0%
+2026-10-27 12:51:32,209 INFO mapreduce.Job:  map 100% reduce 0%
+2026-10-27 12:51:37,258 INFO mapreduce.Job:  map 100% reduce 100%
+2026-10-27 12:51:37,282 INFO mapreduce.Job: Job job_1793103943374_0005 completed successfully
+2026-10-27 12:51:37,355 INFO mapreduce.Job: Counters: 54
 	File System Counters
 		FILE: Number of bytes read=257
 		FILE: Number of bytes written=947199
@@ -34,14 +34,14 @@ packageJobJar: [/tmp/hadoop-unjar3705428010892348866/] [] /tmp/streamjob13451232
 		Launched map tasks=2
 		Launched reduce tasks=1
 		Data-local map tasks=2
-		Total time spent by all maps in occupied slots (ms)=15728
-		Total time spent by all reduces in occupied slots (ms)=4832
-		Total time spent by all map tasks (ms)=7864
-		Total time spent by all reduce tasks (ms)=2416
-		Total vcore-milliseconds taken by all map tasks=7864
-		Total vcore-milliseconds taken by all reduce tasks=2416
-		Total megabyte-milliseconds taken by all map tasks=8052736
-		Total megabyte-milliseconds taken by all reduce tasks=2473984
+		Total time spent by all maps in occupied slots (ms)=13376
+		Total time spent by all reduces in occupied slots (ms)=4094
+		Total time spent by all map tasks (ms)=6688
+		Total time spent by all reduce tasks (ms)=2047
+		Total vcore-milliseconds taken by all map tasks=6688
+		Total vcore-milliseconds taken by all reduce tasks=2047
+		Total megabyte-milliseconds taken by all map tasks=6848512
+		Total megabyte-milliseconds taken by all reduce tasks=2096128
 	Map-Reduce Framework
 		Map input records=256059
 		Map output records=256059
@@ -58,15 +58,15 @@ packageJobJar: [/tmp/hadoop-unjar3705428010892348866/] [] /tmp/streamjob13451232
 		Shuffled Maps =2
 		Failed Shuffles=0
 		Merged Map outputs=2
-		GC time elapsed (ms)=104
-		CPU time spent (ms)=7400
-		Physical memory (bytes) snapshot=797368320
-		Virtual memory (bytes) snapshot=7603621888
-		Total committed heap usage (bytes)=516947968
-		Peak Map Physical memory (bytes)=306462720
-		Peak Map Virtual memory (bytes)=2441822208
-		Peak Reduce Physical memory (bytes)=199708672
-		Peak Reduce Virtual memory (bytes)=2721009664
+		GC time elapsed (ms)=118
+		CPU time spent (ms)=6350
+		Physical memory (bytes) snapshot=770129920
+		Virtual memory (bytes) snapshot=7599468544
+		Total committed heap usage (bytes)=519045120
+		Peak Map Physical memory (bytes)=293933056
+		Peak Map Virtual memory (bytes)=2443067392
+		Peak Reduce Physical memory (bytes)=187703296
+		Peak Reduce Virtual memory (bytes)=2721787904
 	Shuffle Errors
 		BAD_ID=0
 		CONNECTION=0
@@ -78,5 +78,5 @@ packageJobJar: [/tmp/hadoop-unjar3705428010892348866/] [] /tmp/streamjob13451232
 		Bytes Read=4294827
 	File Output Format Counters 
 		Bytes Written=117
-2026-10-25 16:15:37,247 INFO streaming.StreamJob: Output directory: /reviewlens/out/J4b_activity_histogram
-# exit=0 elapsed_s=21
+2026-10-27 12:51:37,356 INFO streaming.StreamJob: Output directory: /reviewlens/out/J4b_activity_histogram
+# exit=0 elapsed_s=19

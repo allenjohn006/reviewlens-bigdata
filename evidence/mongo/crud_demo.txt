@@ -2,7 +2,7 @@
    reviews in collection: 567247
 
 == CREATE  (insert_one / insert_many)
-insert_one -> 6addde00fa1d8e9fb7594cf1
+insert_one -> 6ae0a142ead35e5f2c1d0cc8
 insert_many -> 3 documents
 
 == READ  (find / count / aggregate)
@@ -19,14 +19,14 @@ find_one reviewId=9000001 ->
  'summary': 'Demo review',
  'text': 'Inserted live during the viva.',
  'userId': 'ADEMOUSER'}
-demo reviews by sentiment: {'negative': 1, 'neutral': 1, 'positive': 2}
+demo reviews by sentiment: {'positive': 2, 'neutral': 1, 'negative': 1}
 5-star reviews in the whole collection: 362416
 Top 5 products with >= 200 reviews by average score (aggregation pipeline straight on the 567k reviews):
    B000NMJWZO  reviews=542  avg=4.882
    B003QDRJXY  reviews=264  avg=4.837
    B000GAT6NG  reviews=389  avg=4.802
-   B001E8DHPW  reviews=389  avg=4.802
    B004EAGP74  reviews=389  avg=4.802
+   B001E8DHPW  reviews=389  avg=4.802
 
 == UPDATE  (update_one / update_many)
 update_one helpYes += 2 -> 1 modified
@@ -39,6 +39,6 @@ delete_many demo product -> 3
 reviews now: 567247
 
 == INDEX  (why indexes matter: explain with and without the productId index)
-   WITH index    -> docs examined=    913  returned= 913  server time=3 ms
-   WITHOUT index  -> docs examined= 567247  returned= 913  server time=263 ms
+   WITH index    -> docs examined=    913  returned= 913  server time=2 ms
+   WITHOUT index  -> docs examined= 567247  returned= 913  server time=188 ms
    index list: ['_id_', 'productId_1', 'userId_1', 'date_1', 'score_1', 'sentiment_1', 'reviewId_1']
