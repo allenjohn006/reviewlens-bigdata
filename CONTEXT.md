@@ -1,23 +1,38 @@
-# CONTEXT — read this first if you are a new chat / new person
+# CONTEXT — ReviewLens Project Handoff & Technical Overview
 
-## Who and why
-Student (Karunya Institute, B.Tech AI&DS, team project; works on Ubuntu 26.04, 14 GB RAM, 12 cores) needs a **small, simple Big Data project** for course **23DC2044 Big Data Tools and Techniques**. The faculty do **not** care about front end/back end/cloud. They want to **see Hadoop and MapReduce running and understand the database side**, and they want **MongoDB connected natively (not a Docker instance)**. The student has exams and wants to finish early and be able to explain everything themself.
+## Who and Why
+Student (Karunya Institute, B.Tech AI&DS, team project; running inside **WSL2 / Ubuntu on Windows**, 14 GB RAM, 12 cores) needs an end-to-end Big Data project for course **23DC2044 Big Data Tools and Techniques**.
+The faculty requirement: **demonstrate Hadoop MapReduce running on YARN, connect native MongoDB directly (not in Docker), validate accuracy, and present business insights.**
 
-## Rubric (marks 30 + 10 certificate by the student)
-Dataset & MapReduce 10 (Kaggle dataset ≥ 50 k records, semi-structured/unstructured preferred, cleaned, correct MapReduce, meaningful results) · NoSQL integration 5 (MongoDB operations verified) · Result 10 (accurate, explained, validated) · Report 5 · PPT 7–10 slides. Decision: **Hadoop does MapReduce; MongoDB only for storage/insert/delete/query** (the handout's "MapReduce in MongoDB" was an error).
+## Rubric Alignment (Marks: 30 + 10 Certificate)
+* **Dataset & MapReduce (10 marks):** Kaggle *Amazon Fine Food Reviews* (568,454 rows, 11.3x required 50k minimum). Cleaned to 567,247 records with a complete audit log. 5 MapReduce jobs with combiners and counters on Hadoop YARN.
+* **NoSQL Integration (5 marks):** Native MongoDB 7.0.14 running on port **27019** (isolated from Docker on 27017). 567,247 documents loaded in 9.4s, 7 indexes, full CRUD operations, and `explain()` benchmark (2 ms indexed vs 188 ms table scan).
+* **Result & Accuracy (10 marks):** 5/5 validation checks PASS with **0 mismatches across 365,008 keys** against independent Pandas recomputations. 5 analytical figures and insights report.
+* **Report (5 marks):** Comprehensive draft prepared in `docs/REPORT_DRAFT.md`.
+* **Presentation (7–10 slides):** Structured outline and live demo script in `docs/PRESENTATION.md`.
+* **Certificate (10 marks):** MongoDB Skills course certificate provided by student.
 
-## Decisions made (do not re-litigate)
-* Project **ReviewLens**, option A: Amazon Fine Food Reviews. Separate small repo (this one), independent of the large **RetailPulse** repo (`~/IA-3`, GitHub `allenjohn006/retailpulse`), which stays as it is.
-* Native MongoDB **7.0.14** (tarball in `~/tools/mongodb`, port **27019**, data `~/reviewlens/mongo-data`); **not 8.x** (crashes on kernel 7.0.0-31). Old Docker Mongo (`retailpulse-mongo`) uses 27017 — ignore.
-* Hadoop 3.4.3 single node at `~/tools/hadoop` (HDFS :9000, NameNode UI :9870, YARN UI :8088), Java 17, Hadoop Streaming with Python. Daemons stop on reboot: `bash scripts/start_hadoop.sh`.
-* MongoDB ⇄ Hadoop through a TSV file (connector discontinued). Python env: `.venv` (3.12, uv).
-* Working style: plan first, honest numbers (never invent metrics), log everything, no secrets in files. The student asked for step-by-step explanations they can repeat themselves.
+## Architecture Decisions Made
+* **Decoupled Architecture:** Hadoop does MapReduce; MongoDB handles storage, indexing, and transactional/analytical queries.
+* **Native MongoDB 7.0.14:** Standalone process running on port **27019** with physical files in `mongo-data/` (not Docker). MongoDB 7.0 is selected because MongoDB 8.x crashes on Linux kernel 7.0.
+* **Hadoop 3.4.3 on YARN:** Single-node pseudo-distributed cluster (`HADOOP_HOME=~/tools/hadoop`, HDFS on `:9000`, NameNode UI on `:9870`, YARN UI on `:8088`). Java 17, Hadoop Streaming via Python.
+* **File Exchange:** MongoDB and Hadoop exchange data via tab-separated values (`reviews.tsv`) in HDFS because the legacy MongoDB-Hadoop connector was deprecated by MongoDB.
+* **Streamlit UI Dashboard:** Multi-page interactive application on `http://localhost:8501` featuring telemetry, live query workbench, index benchmarks, and publication-grade architecture diagram.
+* **Git Repository:** Synchronized to `https://github.com/allenjohn006/reviewlens-bigdata.git` on branches `main` and `alnx`.
 
-## State (2026-10-25): **built and verified**
-Clean 568,454→567,247 · MongoDB loaded (11 s, 7 indexes) · 5 Hadoop runs OK (J1 64 s, J2 24 s, J3 22 s, J4 24 s, J4b 20 s) · results loaded to `mr_*` · validation 5/5 PASS · 5 charts · CRUD demo · 5 unit tests · docs written · screenshots in `evidence/screenshots/`.
+## Current System State (Verified Active)
+1. **WSL Environment:** Cleaned Unix LF line endings across all scripts and configurations.
+2. **Native MongoDB 7.0:** Active on port 27019 with 567,247 documents loaded in `reviewlens.reviews` and 6 `mr_*` result marts.
+3. **Hadoop Daemons:** All 4 services active (`NameNode`, `DataNode`, `ResourceManager`, `NodeManager`).
+4. **Streamlit UI:** Active on `http://localhost:8501`.
+5. **Testing & Validation:** 5/5 unit tests pass in 0.19s; 5/5 ground-truth validation checks PASS with 0 mismatches.
 
-## Possible next work
-Student rehearses the demo (`docs/PRESENTATION.md`), writes report conclusion in own words, makes the PPT, adds name/ID. Optional: a second small structured job (e.g. Store Sales) if the faculty want structured data too; Java version of one mapper/reducer if they insist on Java; GitHub repo polish.
-
-## How to verify quickly
-`source scripts/env.sh && jps && mongosh --port 27019 --eval 'db.getSiblingDB("reviewlens").reviews.countDocuments({})'` → 567247; `python -m pytest tests -q` → 5 passed; `python scripts/08_validate.py` → ALL PASS.
+## Quick Health Check
+```bash
+source scripts/env.sh
+jps                                    # Should list NameNode, DataNode, ResourceManager, NodeManager
+mongosh --port 27019 --eval 'db.getSiblingDB("reviewlens").reviews.countDocuments({})'  # Returns 567247
+python -m pytest tests -q              # Returns: 5 passed in 0.19s
+python scripts/08_validate.py          # Returns: ALL PASS
+curl -sI http://localhost:8501         # Returns: HTTP/1.1 200 OK
+```

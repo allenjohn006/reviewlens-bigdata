@@ -15,6 +15,7 @@ Your faculty want to **see Hadoop and MapReduce working** and **MongoDB running 
    * J4b (chained to J4) turned that into a histogram.
 5. **Back to MongoDB.** The job results were loaded into MongoDB collections (`mr_words`, `mr_products`, `mr_months`, `mr_users`, `mr_activity_hist`, `mr_jobs`) and analysed with queries, producing 5 charts and the insights.
 6. **Proof it is correct.** Every job was recomputed a different way with pandas — 5 of 5 checks matched exactly. Five unit tests check each mapper/reducer. The whole pipeline was re-run from scratch in one command (4 min 39 s) and gave the same results.
+7. **Interactive Dashboard & Architecture Visual.** A clean, professional multi-page Streamlit dashboard (`http://localhost:8501`) showcases dataset exploration, MapReduce executions, MongoDB schema/indexes, interactive Plotly visualizations, validation proof, and live MongoDB query execution. A high-resolution pipeline architecture diagram is embedded on the landing page.
 
 ## Main findings
 64 % of reviews are 5-star · 68.5 % of reviewers wrote just one review (most active: 442) · average score drifted from 4.38 to 4.12 over the years · review volume peaked in Sept 2012 (21,903) · words like *deceptive, yuck, worst, refund* mark negative reviews · "good" and "like" are common even in negative reviews, so word frequency is not sentiment.
@@ -24,7 +25,8 @@ Your faculty want to **see Hadoop and MapReduce working** and **MongoDB running 
 |---|---|
 | `~/reviewlens` (this folder) | The whole project — **separate from `~/IA-3`** (RetailPulse) |
 | GitHub `allenjohn006/reviewlens-bigdata` (private) | The same project, pushed |
-| `scripts/` | Numbered steps 01–10 (download, clean, start Mongo, load, export, run jobs, load results, validate, charts, CRUD demo), plus `run_all.sh` for everything |
+| `dashboard/` | Multi-page Streamlit UI (`app.py`, 6 subpages in `pages/`, `pipeline_architecture.png`, `start_dashboard.sh`) |
+| `scripts/` | Numbered steps 01–10 (download, clean, start Mongo, load, export, run jobs, load results, validate, charts, CRUD demo), `generate_architecture_diagram.py`, plus `run_all.sh` for everything |
 | `hadoop/streaming/` | **The MapReduce code** (mappers and reducers) — show this when asked "where is MapReduce?" |
 | `config/` | The four Hadoop XML configuration files |
 | `tests/` | Unit tests of the mappers/reducers |

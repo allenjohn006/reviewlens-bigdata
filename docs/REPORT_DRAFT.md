@@ -17,10 +17,11 @@ Online shops collect millions of customer reviews. This project processes a real
 | Apache Hadoop (HDFS, YARN, MapReduce) | 3.4.3, single-node cluster, Hadoop Streaming | distributed storage & processing |
 | MongoDB (native server) | 7.0.14, port 27019 | storage: insert, query, update, delete |
 | Python, pandas, PyMongo, matplotlib | 3.12 | mappers/reducers, loading, validation, charts |
-| Ubuntu Linux, 12 cores, 14 GB RAM | | environment |
+| Streamlit, Plotly | 1.32+ / 5.18+ | interactive UI dashboard & data visualization |
+| Ubuntu Linux (WSL2), 12 cores, 14 GB RAM | | execution environment |
 
 ## 4. Architecture / data flow
-`Reviews.csv → cleaning → MongoDB (reviews) → export (TSV) → HDFS → MapReduce jobs on YARN → result files → MongoDB (mr_* collections) → analysis, charts, validation`  (diagram in README).
+`Reviews.csv → cleaning → MongoDB (reviews) → export (TSV) → HDFS → MapReduce jobs on YARN → result files → MongoDB (mr_* collections) → analysis, charts, validation, interactive UI` (see high-resolution architecture diagram in `dashboard/pipeline_architecture.png`).
 
 ## 5. Pre-processing (cleaning log)
 | Issue | Rows | Action |
@@ -55,6 +56,7 @@ The 567,247 reviews are exported from MongoDB to a tab-separated file (283 MB) a
 3. **Growth and drift:** volume rises steadily to a peak of 21,903 reviews in September 2012; the average monthly score falls from 4.38 (first year) to 4.12 (last 12 months) (Figure 4).
 4. **Reviewer behaviour:** 68.5 % of the 256,059 reviewers wrote exactly one review; the most active wrote 442 (Figure 5, log scale).
 5. **Products:** 857 products have ≥ 100 reviews; the best average is 4.97 (113 reviews) and the worst 1.34 (131 reviews).
+6. **Interactive Dashboard:** All results, charts, raw data distributions, and index benchmarks are also visualized interactively via a local multi-page Streamlit dashboard (`dashboard/app.py` on port 8501).
 
 ## 9. Validation
 Each job was recomputed independently with pandas/Python `Counter` on the cleaned file and compared key by key: **5 of 5 checks passed with zero mismatches** (34,541 + 74,258 + 143 + 256,059 + 7 keys). Five unit tests check each mapper/reducer on small inputs. The Hadoop counters and logs for every run are in `evidence/hadoop/`.

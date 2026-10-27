@@ -5,16 +5,29 @@
 2. **Objectives** — process semi-structured reviews with Hadoop MapReduce; store/query with MongoDB; validate; draw insights.
 3. **Dataset** — Kaggle Amazon Fine Food Reviews: 568,454 reviews, 74 k products, 256 k reviewers, 1999–2012, CC0.
 4. **Cleaning** — table from report §5 (−1,207 rows; 146,636 HTML cleaned).
-5. **Tools & architecture** — the data-flow diagram: MongoDB (storage) ⇄ HDFS/MapReduce (processing); native, no Docker.
+5. **Tools & architecture** — the data-flow diagram: MongoDB (storage) ⇄ HDFS/MapReduce (processing); native, no Docker (insert `dashboard/pipeline_architecture.png`).
 6. **MapReduce method** — job table + the word-count shuffle picture + combiner (−96 %) + counters.
 7. **MongoDB integration** — 567,247 inserts, 7 indexes, CRUD, `explain` about 1–3 ms vs about 260 ms.
-8. **Results** — charts 01–05 (2–3 per slide as space allows) + key numbers.
+8. **Results** — charts 01–05 (2–3 per slide as space allows) + key numbers + live Streamlit Dashboard demo (`http://localhost:8501`).
 9. **Validation, limitations, conclusion** — 5/5 PASS; honest limits; future work. (+ References.)
 
-## Live demo (10 minutes) — practise once
+## Live demo (10 minutes) — Two presentation options
+
+### Option 1: Visual Interactive Presentation (Streamlit Dashboard)
+Start the dashboard: `bash dashboard/start_dashboard.sh` and open `http://localhost:8501`.
+1. **Main Landing:** Show the programmatically generated Pipeline Architecture diagram and system summary metrics (567k docs, 283 MB HDFS, 5 jobs).
+2. **Page 1 (Dataset):** Show raw vs clean review statistics, cleaning logs, and sample review JSONs.
+3. **Page 2 (MapReduce):** Walk through the 5 jobs, mapper/reducer logic, YARN runtimes, and the 96% combiner reduction.
+4. **Page 3 (MongoDB):** Show native MongoDB status, 7 collections, index configurations, and index benchmark.
+5. **Page 4 (Insights):** Present the 5 interactive Plotly charts (Rating Distribution, Polarizing Words, Monthly Volume/Rating Trend, Long-tail Reviewer Activity, Top Products).
+6. **Page 5 (Validation):** Demonstrate the 5/5 PASS zero-mismatch independent pandas validation table.
+7. **Page 6 (Live Demo):** Run live MongoDB queries in front of faculty: CRUD actions, aggregation pipeline, and the live `explain()` demonstrating index performance (1–3 ms vs 260 ms).
+
+### Option 2: Command-Line and Terminal Verification
+If faculty request seeing the terminal, cluster daemons, and low-level commands:
 ```bash
 cd ~/reviewlens && source scripts/env.sh
-bash scripts/start_hadoop.sh              # 1. Hadoop daemons;   jps  -> 4 daemons
+bash scripts/start_hadoop.sh              # 1. Hadoop daemons;   jps  -> 4 daemons (NameNode, DataNode, RM, NM)
 bash scripts/03_start_mongo.sh            # 2. native MongoDB;   ps aux | grep mongod ; ls mongo-data
 mongosh --port 27019                      # 3. show dbs; use reviewlens; show collections; db.reviews.countDocuments({}); db.reviews.findOne()
 hdfs dfs -ls -h /reviewlens/raw           # 4. the data in HDFS;  browser: localhost:9870 -> Browse the file system (3 blocks)

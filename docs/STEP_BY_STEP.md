@@ -281,6 +281,24 @@ Index effect measured: with the `productId` index **913 documents examined, abou
 $ python -m pytest tests -q          # 5 passed: each job's mapper|sort|reducer logic
 ```
 
+### Step 12 — Generate Architecture Visual
+```bash
+$ python scripts/generate_architecture_diagram.py
+```
+Outputs a high-resolution (300 DPI) schematic to `dashboard/pipeline_architecture.png` illustrating the exact dataflow from Kaggle CSV through Cleaning, Native MongoDB, HDFS blocks, MapReduce jobs on YARN, Validation, and Dashboard visualizers.
+
+### Step 13 — Launch the Multi-Page Streamlit Dashboard
+```bash
+$ bash dashboard/start_dashboard.sh
+```
+Access at `http://localhost:8501`. Features 6 pages:
+1. **Dataset**: Raw vs cleaned counts, anomaly breakdown, and live document preview.
+2. **MapReduce**: 5-job monitor with real YARN runtimes, block splits, and the 96% combiner reduction.
+3. **MongoDB**: Native instance stats, collection sizes, 7 indexes, and index lookup benchmark.
+4. **Insights**: 5 interactive Plotly charts (Rating Distribution, Polarizing Words, Growth Drift, Long Tail, Product Averages).
+5. **Validation**: Zero-mismatch proof table validating all MapReduce outputs against pandas.
+6. **Live Demo**: Live interactive query execution in MongoDB (insert, update, delete, aggregation pipeline, and `explain()`).
+
 ### Run everything at once
 `bash scripts/run_all.sh` (about 5 minutes).
 
@@ -290,6 +308,9 @@ $ python -m pytest tests -q          # 5 passed: each job's mapper|sort|reducer 
 |---|---|---|
 | `jps` does not list NameNode etc. | Hadoop does not auto-start after reboot | `bash scripts/start_hadoop.sh` |
 | `Connection refused` to port 9000/27019 | daemon/mongod not running | start it (Step 3 / A5) |
+| `syntax error: unexpected end of file` in bash | Windows CRLF line endings (`\r\n`) introduced by editing in Windows | `find . -type f -not -path '*/.*' -exec sed -i 's/\r$//' {} +` |
+| Hadoop daemons die immediately when subshell exits | Terminal session or subshell sending SIGHUP to background JVMs in WSL | Daemons run with `hdfs --daemon start` or `nohup` in decoupled process groups |
+| Web UI inaccessible from Windows browser | Wrong port or binding | Access `http://localhost:8501` (Streamlit), `http://localhost:9870` (NameNode), `http://localhost:8088` (YARN); WSL2 forwards localhost automatically |
 | Job fails: `ModuleNotFoundError: No module named 'common'` | Python can't find the shared file shipped with `-files` | already fixed: runner passes `-cmdenv PYTHONPATH=.` |
 | Real error hidden behind `subprocess failed with code 1` | error is in the *task's* stderr | `~/tools/hadoop/logs/userlogs/<application>/<container>/stderr` |
 | `mongod` exits at once / `kernel … incompatibility` | MongoDB 8.x on kernel ≥ 6.19 | use 7.0.x |
@@ -300,6 +321,7 @@ $ python -m pytest tests -q          # 5 passed: each job's mapper|sort|reducer 
 
 ## PART D — Stop everything
 ```bash
+$ pkill -f "streamlit run" || true
 $ yarn --daemon stop nodemanager; yarn --daemon stop resourcemanager; hdfs --daemon stop datanode; hdfs --daemon stop namenode
 $ ~/tools/mongodb/bin/mongod --dbpath ~/reviewlens/mongo-data --shutdown
 ```
